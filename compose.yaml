@@ -1,0 +1,74 @@
+services:
+  todo_service:
+    container_name: todo_service
+    build:
+      context: ./todo_service
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app:delegated
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: todo
+      DB_PASSWORD: todo
+      DB_NAME: todo_db
+      DB_SSL_MODE: disable
+    depends_on:
+      db:
+        condition: service_healthy
+
+  auth_service:
+    container_name: auth_service
+    build:
+      context: ./auth_service
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      REDIS_URL: redis:6379
+    ports:
+      - 3002:8080
+    volumes:
+      - ./:/app:delegated
+    depends_on:
+      redis:
+        condition: service_healthy
+
+  redis:
+    container_name: redis
+    image: redis:7.2.3
+    environment:
+      ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - 6379:6379
+    healthcheck:
+      test:
+        - CMD
+        - redis-cli
+        - ping
+
+  db:
+    container_name: db
+    image: postgres:16.1
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: db
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./.docker/init_db:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 3s
+      timeout: 5s
+      retries: 60
+
+volumes:
+  db_data:
+    driver: local

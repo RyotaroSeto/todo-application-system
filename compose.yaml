@@ -1,4 +1,18 @@
 services:
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app:delegated
+    depends_on:
+      - todo_service
+      - auth_service
+
   todo_service:
     container_name: todo_service
     build:

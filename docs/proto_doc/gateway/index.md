@@ -3,7 +3,7 @@
 
 ## Table of Contents
 
-- [todo/auth.proto](#todo_auth-proto)
+- [gateway/auth.proto](#gateway_auth-proto)
     - [AuthenticateRequest](#todo-AuthenticateRequest)
     - [AuthenticateResponse](#todo-AuthenticateResponse)
   
@@ -13,10 +13,10 @@
 
 
 
-<a name="todo_auth-proto"></a>
+<a name="gateway_auth-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## todo/auth.proto
+## gateway/auth.proto
 
 
 

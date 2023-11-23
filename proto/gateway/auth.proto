@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "todo_service/proto";
+option go_package = "gateway/proto";
 
 package todo;
 

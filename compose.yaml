@@ -50,6 +50,17 @@ services:
       redis:
         condition: service_healthy
 
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+      target: dev
+    tty: true
+    stdin_open: true
+    ports:
+      - 2000:2000
+    volumes:
+      - ./:/app:delegated
   redis:
     container_name: redis
     image: redis:7.2.3

@@ -8,7 +8,9 @@ import (
 )
 
 type Config struct {
-	Port string `env:"PORT,default=3002"`
+	Port      string `env:"PORT,default=3002"`
+	RedisHost string `env:"REDIS_HOST,required"`
+	RedisPort int    `env:"REDIS_PORT,required"`
 }
 
 var c *Config

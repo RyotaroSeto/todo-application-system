@@ -10,8 +10,7 @@ services:
     volumes:
       - ./:/app:delegated
     depends_on:
-      - todo_service
-      - auth_service
+      - gateway
 
   todo_service:
     container_name: todo_service
@@ -49,6 +48,8 @@ services:
     depends_on:
       redis:
         condition: service_healthy
+      db:
+        condition: service_healthy
 
   gateway:
     build:
@@ -61,6 +62,9 @@ services:
       - 2000:2000
     volumes:
       - ./:/app:delegated
+    depends_on:
+      - todo_service
+      - auth_service
 
   redis:
     container_name: redis

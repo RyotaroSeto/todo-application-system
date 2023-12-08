@@ -19,6 +19,9 @@ func NewTaskRepository() repository.Database {
 }
 
 func (r *TaskRepository) AddTask(ctx context.Context, task *model.Task) error {
+	if err := r.db.Create(task).Error; err != nil {
+		return err
+	}
 	return nil
 }
 

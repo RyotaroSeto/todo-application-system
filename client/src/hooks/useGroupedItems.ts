@@ -1,5 +1,5 @@
 import { useState, useEffect, Dispatch, SetStateAction } from 'react'
-import { Item, GroupType, GroupTypes } from '../data'
+import { Item, GroupType, GroupTypes } from '../model/data'
 
 type GroupedItems = {
   [k in GroupType]?: Item[]

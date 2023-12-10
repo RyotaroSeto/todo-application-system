@@ -3,11 +3,11 @@ import React, { useState, useCallback } from 'react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
-import './App.css'
+import './styles/pages.css'
 import Header from '../components/Header'
 import Group from '../components/Group'
 import useGroupedItems from '../hooks/useGroupedItems'
-import { items as initial, GroupTypes, MoveHandler } from '../data'
+import { items as initial, GroupTypes, MoveHandler } from '../model/data'
 
 export default function Home() {
   const [groupedItems, items, setItems] = useGroupedItems(initial)

@@ -11,7 +11,7 @@ import {
   ItemTypes,
   TitleMap,
   MoveHandler,
-} from '../data'
+} from '../model/data'
 
 const Group: React.FC<{
   items: _Item[]

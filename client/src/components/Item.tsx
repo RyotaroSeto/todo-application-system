@@ -2,7 +2,7 @@ import React from 'react'
 import { NoteIcon } from '@primer/octicons-react'
 
 import './Item.css'
-import type { Contents } from '../data'
+import type { Contents } from '../model/data'
 
 const Item: React.FC<{
   id: number

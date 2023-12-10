@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
 
 import './Item.css'
-import { Item, ItemWithIndex, ItemTypes, MoveHandler } from '../data'
+import { Item, ItemWithIndex, ItemTypes, MoveHandler } from '../model/data'
 
 const Draggable: React.FC<{
   item: Item

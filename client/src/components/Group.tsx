@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDrop } from 'react-dnd'
 
 import './Group.css'
@@ -36,6 +36,17 @@ const Group: React.FC<{
     },
   })
 
+  const [todos, setTodos] = useState<string[]>([])
+  const [newTodo, setNewTodo] = useState('')
+  const addTodo = () => {
+    setTodos([...todos, newTodo])
+    setNewTodo('')
+  }
+
+  const deleteTodo = (todo: string) => {
+    setTodos(todos.filter((t) => t !== todo))
+  }
+
   return (
     <div className={['group', groupType].join(' ')}>
       <h2>
@@ -53,6 +64,19 @@ const Group: React.FC<{
           )
         })}
       </ul>
+      <div>
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button onClick={addTodo}>Add Card</button>
+        <ul>
+          {todos.map((todo, i) => (
+            <li key={i}>{todo}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }

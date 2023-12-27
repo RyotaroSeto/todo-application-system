@@ -14,17 +14,17 @@ export const useTodo = () => {
     })
   }, [])
 
-  const toggleTodoListItemStatus = (id: string, done: boolean) => {
-    const todoItem = todoList.find((item: Todo) => item.id === id)
-    const newTodoItem: Todo = { ...todoItem!, done: !done }
+  //   const toggleTodoListItemStatus = (id: string, done: boolean) => {
+  //     const todoItem = todoList.find((item: Todo) => item.id === id)
+  //     const newTodoItem: Todo = { ...todoItem!, done: !done }
 
-    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
-      const newTodoList = todoList.map((item) =>
-        item.id !== updatedTodo.id ? item : updatedTodo
-      )
-      setTodoList(newTodoList)
-    })
-  }
+  //     todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+  //       const newTodoList = todoList.map((item) =>
+  //         item.id !== updatedTodo.id ? item : updatedTodo
+  //       )
+  //       setTodoList(newTodoList)
+  //     })
+  //   }
 
   const addTodoListItem = (todoContent: string) => {
     const newTodoItem = { id: ulid(), content: todoContent, done: false }
@@ -44,7 +44,7 @@ export const useTodo = () => {
   // 作成した関数を返す
   return {
     todoList,
-    toggleTodoListItemStatus,
+    // toggleTodoListItemStatus,
     addTodoListItem,
     deleteTodoListItem,
   }

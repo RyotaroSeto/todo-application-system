@@ -1,12 +1,20 @@
-// import axios from 'axios'
 import { Todo } from '../model/Todo'
 
-const todoDataUrl = 'http://localhost:3100/todos'
+const todoDataUrl = 'http://localhost:8282/todo'
 
-// 全TODOリスト取得
 export const getAllTodosData = async () => {
-  //   const response = await axios.get(todoDataUrl)
-  //   return response.data
+  const response = await fetch(todoDataUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  //   return await fetch(todoDataUrl, {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   }).then((response) => response.json())
   return [
     {
       id: '1',
@@ -27,20 +35,28 @@ export const getAllTodosData = async () => {
 }
 
 export const addTodoData = async (todo: Todo) => {
-  //   const response = await axios.post(todoDataUrl, todo)
-  //   return response.data
+  const response = await fetch(todoDataUrl, {
+    method: 'POST',
+    body: JSON.stringify(todo),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   return todo
 }
 
-// 1件のTODOを削除する
 export const deleteTodoData = async (id: string) => {
-  //   await axios.delete(`${todoDataUrl}/${id}`)
+  const response = await fetch(`${todoDataUrl}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   return id
 }
 
-// 1件のTODOを更新する
-export const updateTodoData = async (id: string, todo: Todo) => {
-  //   const response = await axios.put(`${todoDataUrl}/${id}`, todo)
-  //   return response.data
-  return todo
-}
+// export const updateTodoData = async (id: string, todo: Todo) => {
+//   //   const response = await axios.put(`${todoDataUrl}/${id}`, todo)
+//   //   return response.data
+//   return todo
+// }

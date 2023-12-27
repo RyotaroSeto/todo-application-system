@@ -1,6 +1,6 @@
 import { Todo } from '../model/Todo'
 
-const todoDataUrl = 'http://localhost:8282/todo'
+const todoDataUrl = 'http://localhost:2000/todo'
 
 export const getAllTodosData = async () => {
   const response = await fetch(todoDataUrl, {

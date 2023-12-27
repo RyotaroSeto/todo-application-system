@@ -1,14 +1,14 @@
-.horizontal {
-    display: flex;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  .group-section {
-    box-sizing: border-box;
-    width: 45%;
-    max-width: 400px;
-    min-width: 240px;
-  }
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
 
-  .group-section:not(.horizontal):not(:first-of-type) {
-    margin-top: 10px;
-  }

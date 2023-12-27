@@ -1,18 +1,12 @@
 # todo-application-syste
 
-- board の作成
-- board の削除
-- board のコンテンツ内容編集
-- board のステータス更新
+- todo の作成
+- todo の削除
 
-<!-- - status の作成
-- status の削除 -->
-
-- board
+- todo
 
   - id
   - title
-  - body
   <!-- - status_id -->
   - status
     - 独自型定義
@@ -20,9 +14,11 @@
   - update_at
   - delete_at
 
-<!-- - status
+- status
   - id
   - name
   - create_at
   - update_at
-  - delete_at -->
+  - delete_at
+
+<!-- https://trello.com/b/kYnD1Gfp/givers -->

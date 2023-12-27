@@ -3,7 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
+	"gateway/handlers"
 	"gateway/infra"
+	"gateway/server"
 	"log"
 	"net"
 	"os"
@@ -27,11 +29,11 @@ func run(ctx context.Context) error {
 		return err
 	}
 
-	mux, err := NewHandler(ctx, cfg)
+	mux, err := handlers.NewHandler(ctx, cfg)
 	if err != nil {
 		return err
 	}
 
-	s := NewServer(l, mux)
+	s := server.NewServer(l, mux)
 	return s.Run(ctx)
 }

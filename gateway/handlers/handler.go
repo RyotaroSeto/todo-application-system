@@ -16,11 +16,13 @@ func NewHandler(ctx context.Context, cfg *configs.Config) (http.Handler, error) 
 
 func todoHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
-	case "GET":
+	case http.MethodGet:
 		fmt.Fprint(w, "GET hello!\n")
-	case "POST":
+	case http.MethodPost:
 		fmt.Fprint(w, "POST hello!\n")
-	case "DELETE":
+	case http.MethodPut:
+		fmt.Fprint(w, "PUT hello!\n")
+	case http.MethodDelete:
 		fmt.Fprint(w, "DELETE hello!\n")
 	default:
 		fmt.Fprint(w, "Method not allowed.\n")

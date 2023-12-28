@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option go_package = "todo_service/proto";
+
+package todo_service;
+
+service TodoService {
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc UpdateStatus(UpdateStatusRequest) returns (UpdateStatusResponse) {}
+  rpc Delete(DeleteRequest) returns (DeleteResponse) {}
+}
+
+message GetRequest {
+}
+
+message GetResponse {
+  Todo todo = 1;
+}
+
+message CreateRequest {
+  Todo todo = 1;
+}
+
+message CreateResponse {
+}
+
+message UpdateStatusRequest {
+  uint64 id = 1;
+  TodoStatus status = 2;
+}
+
+message UpdateStatusResponse {
+}
+
+message DeleteRequest {
+  uint64 id = 1;
+}
+
+message DeleteResponse {
+}
+
+message Todo {
+  uint64 id = 1;
+  string title = 2;
+  TodoStatus status = 3;
+}
+
+enum TodoStatus {
+  TODO_STATUS_UNSPECIFIED = 0;
+  TODO_STATUS_PROGRESS = 1;
+  TODO_STATUS_DONE = 2;
+}

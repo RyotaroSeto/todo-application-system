@@ -3,37 +3,95 @@
 
 ## Table of Contents
 
-- [gateway/todo_service.proto](#gateway_todo_service-proto)
-    - [TodoService](#gateway-TodoService)
+- [todo/todo.proto](#todo_todo-proto)
+    - [Todo](#todo-Todo)
+    - [TodoServiceRequest](#todo-TodoServiceRequest)
+    - [TodoServiceResponse](#todo-TodoServiceResponse)
+  
+    - [TodoStatus](#todo-TodoStatus)
+  
+    - [TodoService](#todo-TodoService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="gateway_todo_service-proto"></a>
+<a name="todo_todo-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## gateway/todo_service.proto
+## todo/todo.proto
+
+
+
+<a name="todo-Todo"></a>
+
+### Todo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
+| title | [string](#string) |  |  |
+| status | [TodoStatus](#todo-TodoStatus) |  |  |
+
+
+
+
+
+
+<a name="todo-TodoServiceRequest"></a>
+
+### TodoServiceRequest
+
+
+
+
+
+
+
+<a name="todo-TodoServiceResponse"></a>
+
+### TodoServiceResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| todo | [Todo](#todo-Todo) |  |  |
+
+
+
+
+
+ 
+
+
+<a name="todo-TodoStatus"></a>
+
+### TodoStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TODO_STATUS_UNSPECIFIED | 0 |  |
+| TODO_STATUS_PROGRESS | 1 |  |
+| TODO_STATUS_DONE | 2 |  |
 
 
  
 
  
 
- 
 
-
-<a name="gateway-TodoService"></a>
+<a name="todo-TodoService"></a>
 
 ### TodoService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [.todo_service.GetRequest](#todo_service-GetRequest) | [.todo_service.GetResponse](#todo_service-GetResponse) |  |
-| Create | [.todo_service.CreateRequest](#todo_service-CreateRequest) | [.todo_service.CreateResponse](#todo_service-CreateResponse) |  |
-| UpdateStatus | [.todo_service.UpdateStatusRequest](#todo_service-UpdateStatusRequest) | [.todo_service.UpdateStatusResponse](#todo_service-UpdateStatusResponse) |  |
-| Delete | [.todo_service.DeleteRequest](#todo_service-DeleteRequest) | [.todo_service.DeleteResponse](#todo_service-DeleteResponse) |  |
+| Get | [TodoServiceRequest](#todo-TodoServiceRequest) | [TodoServiceResponse](#todo-TodoServiceResponse) |  |
 
  
 

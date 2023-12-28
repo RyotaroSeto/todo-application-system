@@ -175,14 +175,30 @@
         
           
           <li>
-            <a href="#gateway%2ftodo_service.proto">gateway/todo_service.proto</a>
+            <a href="#todo%2ftodo.proto">todo/todo.proto</a>
             <ul>
               
+                <li>
+                  <a href="#todo.Todo"><span class="badge">M</span>Todo</a>
+                </li>
+              
+                <li>
+                  <a href="#todo.TodoServiceRequest"><span class="badge">M</span>TodoServiceRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#todo.TodoServiceResponse"><span class="badge">M</span>TodoServiceResponse</a>
+                </li>
+              
+              
+                <li>
+                  <a href="#todo.TodoStatus"><span class="badge">E</span>TodoStatus</a>
+                </li>
               
               
               
                 <li>
-                  <a href="#gateway.TodoService"><span class="badge">S</span>TodoService</a>
+                  <a href="#todo.TodoService"><span class="badge">S</span>TodoService</a>
                 </li>
               
             </ul>
@@ -195,18 +211,116 @@
     
       
       <div class="file-heading">
-        <h2 id="gateway/todo_service.proto">gateway/todo_service.proto</h2><a href="#title">Top</a>
+        <h2 id="todo/todo.proto">todo/todo.proto</h2><a href="#title">Top</a>
       </div>
       <p></p>
 
       
+        <h3 id="todo.Todo">Todo</h3>
+        <p></p>
 
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>title</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#todo.TodoStatus">TodoStatus</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="todo.TodoServiceRequest">TodoServiceRequest</h3>
+        <p></p>
+
+        
+
+        
+      
+        <h3 id="todo.TodoServiceResponse">TodoServiceResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>todo</td>
+                  <td><a href="#todo.Todo">Todo</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+
+      
+        <h3 id="todo.TodoStatus">TodoStatus</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>TODO_STATUS_UNSPECIFIED</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TODO_STATUS_PROGRESS</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>TODO_STATUS_DONE</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
       
 
       
 
       
-        <h3 id="gateway.TodoService">TodoService</h3>
+        <h3 id="todo.TodoService">TodoService</h3>
         <p></p>
         <table class="enum-table">
           <thead>
@@ -216,29 +330,8 @@
             
               <tr>
                 <td>Get</td>
-                <td><a href="#todo_service.GetRequest">.todo_service.GetRequest</a></td>
-                <td><a href="#todo_service.GetResponse">.todo_service.GetResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>Create</td>
-                <td><a href="#todo_service.CreateRequest">.todo_service.CreateRequest</a></td>
-                <td><a href="#todo_service.CreateResponse">.todo_service.CreateResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>UpdateStatus</td>
-                <td><a href="#todo_service.UpdateStatusRequest">.todo_service.UpdateStatusRequest</a></td>
-                <td><a href="#todo_service.UpdateStatusResponse">.todo_service.UpdateStatusResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>Delete</td>
-                <td><a href="#todo_service.DeleteRequest">.todo_service.DeleteRequest</a></td>
-                <td><a href="#todo_service.DeleteResponse">.todo_service.DeleteResponse</a></td>
+                <td><a href="#todo.TodoServiceRequest">TodoServiceRequest</a></td>
+                <td><a href="#todo.TodoServiceResponse">TodoServiceResponse</a></td>
                 <td><p></p></td>
               </tr>
             

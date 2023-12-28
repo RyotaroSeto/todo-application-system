@@ -3,37 +3,180 @@
 
 ## Table of Contents
 
-- [gateway/todo_service.proto](#gateway_todo_service-proto)
-    - [TodoService](#gateway-TodoService)
+- [todo_service/todo_service.proto](#todo_service_todo_service-proto)
+    - [CreateRequest](#todo_service-CreateRequest)
+    - [CreateResponse](#todo_service-CreateResponse)
+    - [DeleteRequest](#todo_service-DeleteRequest)
+    - [DeleteResponse](#todo_service-DeleteResponse)
+    - [GetRequest](#todo_service-GetRequest)
+    - [GetResponse](#todo_service-GetResponse)
+    - [Todo](#todo_service-Todo)
+    - [UpdateStatusRequest](#todo_service-UpdateStatusRequest)
+    - [UpdateStatusResponse](#todo_service-UpdateStatusResponse)
+  
+    - [TodoStatus](#todo_service-TodoStatus)
+  
+    - [TodoService](#todo_service-TodoService)
   
 - [Scalar Value Types](#scalar-value-types)
 
 
 
-<a name="gateway_todo_service-proto"></a>
+<a name="todo_service_todo_service-proto"></a>
 <p align="right"><a href="#top">Top</a></p>
 
-## gateway/todo_service.proto
+## todo_service/todo_service.proto
+
+
+
+<a name="todo_service-CreateRequest"></a>
+
+### CreateRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| todo | [Todo](#todo_service-Todo) |  |  |
+
+
+
+
+
+
+<a name="todo_service-CreateResponse"></a>
+
+### CreateResponse
+
+
+
+
+
+
+
+<a name="todo_service-DeleteRequest"></a>
+
+### DeleteRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
+
+
+
+
+
+
+<a name="todo_service-DeleteResponse"></a>
+
+### DeleteResponse
+
+
+
+
+
+
+
+<a name="todo_service-GetRequest"></a>
+
+### GetRequest
+
+
+
+
+
+
+
+<a name="todo_service-GetResponse"></a>
+
+### GetResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| todo | [Todo](#todo_service-Todo) |  |  |
+
+
+
+
+
+
+<a name="todo_service-Todo"></a>
+
+### Todo
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
+| title | [string](#string) |  |  |
+| status | [TodoStatus](#todo_service-TodoStatus) |  |  |
+
+
+
+
+
+
+<a name="todo_service-UpdateStatusRequest"></a>
+
+### UpdateStatusRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
+| status | [TodoStatus](#todo_service-TodoStatus) |  |  |
+
+
+
+
+
+
+<a name="todo_service-UpdateStatusResponse"></a>
+
+### UpdateStatusResponse
+
+
+
+
+
+
+ 
+
+
+<a name="todo_service-TodoStatus"></a>
+
+### TodoStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| TODO_STATUS_UNSPECIFIED | 0 |  |
+| TODO_STATUS_PROGRESS | 1 |  |
+| TODO_STATUS_DONE | 2 |  |
 
 
  
 
  
 
- 
 
-
-<a name="gateway-TodoService"></a>
+<a name="todo_service-TodoService"></a>
 
 ### TodoService
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Get | [.todo_service.GetRequest](#todo_service-GetRequest) | [.todo_service.GetResponse](#todo_service-GetResponse) |  |
-| Create | [.todo_service.CreateRequest](#todo_service-CreateRequest) | [.todo_service.CreateResponse](#todo_service-CreateResponse) |  |
-| UpdateStatus | [.todo_service.UpdateStatusRequest](#todo_service-UpdateStatusRequest) | [.todo_service.UpdateStatusResponse](#todo_service-UpdateStatusResponse) |  |
-| Delete | [.todo_service.DeleteRequest](#todo_service-DeleteRequest) | [.todo_service.DeleteResponse](#todo_service-DeleteResponse) |  |
+| Get | [GetRequest](#todo_service-GetRequest) | [GetResponse](#todo_service-GetResponse) |  |
+| Create | [CreateRequest](#todo_service-CreateRequest) | [CreateResponse](#todo_service-CreateResponse) |  |
+| UpdateStatus | [UpdateStatusRequest](#todo_service-UpdateStatusRequest) | [UpdateStatusResponse](#todo_service-UpdateStatusResponse) |  |
+| Delete | [DeleteRequest](#todo_service-DeleteRequest) | [DeleteResponse](#todo_service-DeleteResponse) |  |
 
  
 

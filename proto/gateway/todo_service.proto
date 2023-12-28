@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option go_package = "gateway/proto";
+
+package gateway;
+
+import "todo_service/todo_service.proto";
+
+
+service TodoService {
+  rpc Get(todo_service.GetRequest) returns (todo_service.GetResponse) {}
+  rpc Create(todo_service.CreateRequest) returns (todo_service.CreateResponse) {}
+  rpc UpdateStatus(todo_service.UpdateStatusRequest) returns (todo_service.UpdateStatusResponse) {}
+  rpc Delete(todo_service.DeleteRequest) returns (todo_service.DeleteResponse) {}
+}
+

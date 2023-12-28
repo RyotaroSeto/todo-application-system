@@ -17,7 +17,7 @@ export const TodoItem = ({
     <>
       {todo.content}
       <button onClick={handleToggleTodoListItemStatus}>
-        {todo.done ? 'back to Progress' : 'Done'}
+        {todo.done ? 'Doing' : 'Done'}
       </button>
       <button onClick={handleDeleteTodoListItem}>Delete</button>
     </>

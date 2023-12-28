@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+option go_package = "gateway/proto";
+
+
+package example;
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+service ExampleApi {
+  // Gets a single message.
+  rpc GetMessage(GetMessageRequest) returns (ExampleMessage) {
+    option (google.api.http) = {
+      get: "/example-messages/{id}"
+    };
+  }
+
+  // Creates a new message.
+  rpc CreateMessage(CreateMessageRequest) returns (ExampleMessage) {
+    option (google.api.http) = {
+      post: "/example-messages"
+      body: "*"
+    };
+  }
+
+  // Deletes a message.
+  rpc DeleteMessage(DeleteMessageRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/example-message/{id}"
+    };
+  }
+}
+
+message GetMessageRequest {
+    // The id of the message.
+    int64 id = 1;
+}
+
+message ExampleMessage {
+    // The id of the message.
+    int64 id = 1;
+
+    // The string type example field of the message.
+    string example_field = 2;
+}
+
+message CreateMessageRequest {
+    // The message to create.
+    // message.id is asigned by either the client or the server.
+    // if the client does not specify, the server will generate one and asign it
+    // to this message.
+    ExampleMessage message = 1;
+}
+
+message DeleteMessageRequest {
+    // The id of the message.
+    int64 id = 1;
+}

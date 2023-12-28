@@ -45,6 +45,5 @@ func setupServer() *grpc.Server {
 		svr,
 		ui.NewGRPCService(),
 	)
-	// RegisterTodoServiceServer(svr, NewTodoService())
 	return svr
 }

@@ -40,7 +40,7 @@ export default function Home() {
         todoList={incompletedList}
         toggleTodoListItemStatus={toggleTodoListItemStatus}
         deleteTodoListItem={deleteTodoListItem}
-        title="Progress"
+        title="Doing"
         as="h2"
       />
       <TodoList

@@ -48,6 +48,6 @@ message Todo {
 
 enum TodoStatus {
   TODO_STATUS_UNSPECIFIED = 0;
-  TODO_STATUS_PROGRESS = 1;
+  TODO_STATUS_DOING = 1;
   TODO_STATUS_DONE = 2;
 }

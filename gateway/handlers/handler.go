@@ -3,11 +3,11 @@ package handlers
 import (
 	"context"
 	"fmt"
-	"gateway/infra"
+	"gateway/configs"
 	"net/http"
 )
 
-func NewHandler(ctx context.Context, cfg *infra.Config) (http.Handler, error) {
+func NewHandler(ctx context.Context, cfg *configs.Config) (http.Handler, error) {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/todo", corsMiddleware(todoHandler))

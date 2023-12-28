@@ -3,8 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"gateway/configs"
 	"gateway/handlers"
-	"gateway/infra"
 	"gateway/server"
 	"log"
 	"net"
@@ -19,7 +19,7 @@ func main() {
 }
 
 func run(ctx context.Context) error {
-	cfg, err := infra.LoadConfig(ctx)
+	cfg, err := configs.LoadConfig(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -9,7 +9,8 @@ import (
 
 func NewHandler(ctx context.Context, cfg *infra.Config) (http.Handler, error) {
 	mux := http.NewServeMux()
-	http.HandleFunc("/todo", todoHandler)
+
+	mux.HandleFunc("/todo", corsMiddleware(todoHandler))
 	return mux, nil
 }
 

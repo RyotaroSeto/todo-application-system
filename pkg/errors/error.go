@@ -43,6 +43,10 @@ func Newf(code int, format string, args ...interface{}) CustomError {
 	return &customError{code: code, err: nil, msg: fmt.Sprintf(format, args...)}
 }
 
+func Errorf(code int, format string, err error) CustomError {
+	return &customError{code: code, err: err, msg: fmt.Errorf(format, err).Error()}
+}
+
 func (e *customError) Code() int {
 	if e == nil {
 		return http.StatusOK

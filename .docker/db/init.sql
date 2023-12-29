@@ -1,0 +1,11 @@
+CREATE ROLE todo WITH LOGIN PASSWORD 'todo';
+
+CREATE DATABASE todo;
+
+\c todo
+
+CREATE SCHEMA todo;
+
+GRANT ALL PRIVILEGES ON SCHEMA todo TO todo;
+
+

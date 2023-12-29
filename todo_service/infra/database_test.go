@@ -1,14 +1,12 @@
 package infra
 
 import (
-	"context"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestDBConnect(t *testing.T) {
-	c, _ := LoadConfig(context.Background())
 	type args struct {
 		dsn     string
 		maxConn int
@@ -22,7 +20,7 @@ func TestDBConnect(t *testing.T) {
 		{
 			name: "success",
 			args: args{
-				dsn: c.DNS(),
+				dsn: "host=host user=user password=password dbname=name port=5432 sslmode=disable TimeZone=Asia/Tokyo",
 			},
 			assertion: assert.NoError,
 		},

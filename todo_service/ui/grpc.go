@@ -17,13 +17,13 @@ func NewGRPCService(todo service.Todo) pb.TodoServiceServer {
 }
 
 func (s *GRPCService) Get(ctx context.Context, req *pb.GetRequest) (*pb.GetResponse, error) {
-	todo, err := s.todo.GetList(ctx)
+	list, err := s.todo.GetList(ctx)
 	if err != nil {
 		return nil, err
 	}
 
 	return &pb.GetResponse{
-		Todo: toPbTodoList(todo),
+		List: toPbTodoList(list),
 	}, nil
 }
 
@@ -59,16 +59,20 @@ func (s *GRPCService) Delete(ctx context.Context, req *pb.DeleteRequest) (*pb.De
 
 func toModelTodo(req *pb.Todo) *model.Todo {
 	return &model.Todo{
-		ID:         req.Id,
 		Title:      model.TodoTitle(req.Title),
 		TodoStatus: model.TodoStatus(req.Status),
 	}
 }
 
-func toPbTodoList(todo *model.Todo) *pb.Todo {
-	return &pb.Todo{
-		Id:     todo.ID,
-		Title:  todo.Title.String(),
-		Status: pb.TodoStatus(pb.TodoStatus_value[todo.String()]),
+func toPbTodoList(todoList *model.Todos) []*pb.Todo {
+	list := make([]*pb.Todo, 0, len(*todoList))
+	for _, todo := range *todoList {
+		list = append(list, &pb.Todo{
+			Id:         todo.ID,
+			Title:      string(todo.Title),
+			Status:     pb.TodoStatus(pb.TodoStatus_value[todo.String()]),
+			StatusName: todo.String(),
+		})
 	}
+	return list
 }

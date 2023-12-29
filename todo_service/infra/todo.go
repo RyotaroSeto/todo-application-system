@@ -4,6 +4,8 @@ import (
 	"context"
 	"todo_service/domain/model"
 	"todo_service/domain/repository"
+
+	"gorm.io/gorm/clause"
 )
 
 type TodoRepository struct {
@@ -23,9 +25,9 @@ func (r *TodoRepository) AddTodo(ctx context.Context, todo *model.Todo) (uint64,
 	return todo.ID, result.Error
 }
 
-func (r *TodoRepository) GetTodoList(ctx context.Context) (*model.Todo, error) {
-	todo := &model.Todo{}
-	if err := r.db.Find(todo).Error; err != nil {
+func (r *TodoRepository) GetTodoList(ctx context.Context) (*model.Todos, error) {
+	todo := &model.Todos{}
+	if err := r.db.Find(todo).Preload(clause.Associations).Error; err != nil {
 		return nil, err
 	}
 	return todo, nil

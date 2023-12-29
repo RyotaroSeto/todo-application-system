@@ -20,7 +20,7 @@ func (s *TodoService) Add(ctx context.Context, todo *model.Todo) (uint64, error)
 	return s.repo.AddTodo(ctx, todo)
 }
 
-func (s *TodoService) GetList(ctx context.Context) (*model.Todo, error) {
+func (s *TodoService) GetList(ctx context.Context) (*model.Todos, error) {
 	return s.repo.GetTodoList(ctx)
 }
 

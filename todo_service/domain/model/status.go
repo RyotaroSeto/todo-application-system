@@ -11,10 +11,9 @@ const (
 	TodoStatusDone
 )
 
-// func
-
 type Status struct {
 	ID        TodoStatus `gorm:"primaryKey"`
+	Name      string     `gorm:"not null;"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt time.Time `gorm:"index;comment:削除日時"`

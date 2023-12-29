@@ -9,6 +9,8 @@ type Todo struct {
 	CreatedAt  time.Time
 	UpdatedAt  time.Time
 	DeletedAt  time.Time `gorm:"index;comment:削除日時"`
+
+	Status
 }
 
 type TodoTitle string

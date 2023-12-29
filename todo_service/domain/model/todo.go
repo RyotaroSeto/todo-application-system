@@ -11,10 +11,10 @@ type Todo struct {
 	DeletedAt  time.Time `gorm:"index;comment:削除日時"`
 }
 
+type Todos []Todo
+
 type TodoTitle string
 
 func (t TodoTitle) String() string {
 	return string(t)
 }
-
-type Todos []Todo

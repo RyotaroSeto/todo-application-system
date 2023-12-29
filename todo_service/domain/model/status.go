@@ -11,18 +11,6 @@ const (
 	TodoStatusDone
 )
 
-// type TodoName string
-
-// const (
-// 	TodoNameUnspecified TodoStatus = iota
-// 	TodoNameDoing
-// 	TodoNameDone
-// )
-
-// func (t TodoName) String() string {
-// 	return string(t)
-// }
-
 type Status struct {
 	ID        TodoStatus `gorm:"primaryKey"`
 	Name      string     `gorm:"not null;"`

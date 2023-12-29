@@ -1,0 +1,23 @@
+name: All Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.go'
+      - '**/go.*'
+
+jobs:
+  gateway:
+    name: Gateway
+    uses: './.github/workflows/reusable_ci.yaml'
+    with:
+      root: 'gateway'
+
+  todo_service:
+    name: Todo Service
+    uses: './.github/workflows/reusable_ci.yaml'
+    with:
+      root: 'todo_service'

@@ -1,0 +1,74 @@
+name: Reusable CI
+
+on:
+  workflow_call:
+    inputs:
+      root:
+        type: string
+        default: './'
+      db_name:
+        type: string
+
+env:
+  ROOT: ${{ inputs.root }}
+  DB_USER: todo
+  DB_PASSWORD: todo
+  DB_HOST: localhost
+  DB_PORT: 5432
+  DB_NAME: ${{ inputs.db_name }}
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: ${{ env.ROOT }}
+
+    permissions:
+      pull-requests: write
+      contents: write
+      packages: write
+      actions: write
+
+    name: CI
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:16.1
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: --health-cmd "pg_isready" --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Golang
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: ${{ env.ROOT }}/go.mod
+          cache-dependency-path: ${{ env.ROOT }}/go.sum
+        env:
+          GO111MODULE: on
+
+      - name: Go mod download
+        run: go mod download
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -v ./...
+
+      - name: Lint
+        run: go vet ./...
+
+      - name: Install Staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Staticcheck
+        run: staticcheck ./...

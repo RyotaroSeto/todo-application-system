@@ -12,4 +12,8 @@ plugins:
     out: ../
   - name: go-grpc
     out: ../
-    # opt: generate_unbound_methods=true
+  - plugin: grpc-gateway
+    out: ../
+    opt: generate_unbound_methods=true
+  - plugin: openapiv2
+    out: ../gen/openapi

@@ -230,7 +230,7 @@
               
               
                 <li>
-                  <a href="#todo_service.TodoService"><span class="badge">S</span>TodoService</a>
+                  <a href="#todo_service.TodoApi"><span class="badge">S</span>TodoApi</a>
                 </li>
               
             </ul>
@@ -514,7 +514,7 @@
       
 
       
-        <h3 id="todo_service.TodoService">TodoService</h3>
+        <h3 id="todo_service.TodoApi">TodoApi</h3>
         <p></p>
         <table class="enum-table">
           <thead>
@@ -537,20 +537,6 @@
               </tr>
             
               <tr>
-                <td>UpdateStatus</td>
-                <td><a href="#todo_service.UpdateStatusRequest">UpdateStatusRequest</a></td>
-                <td><a href="#todo_service.UpdateStatusResponse">UpdateStatusResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
-                <td>UpdateTitle</td>
-                <td><a href="#todo_service.UpdateTitleRequest">UpdateTitleRequest</a></td>
-                <td><a href="#todo_service.UpdateTitleResponse">UpdateTitleResponse</a></td>
-                <td><p></p></td>
-              </tr>
-            
-              <tr>
                 <td>Delete</td>
                 <td><a href="#todo_service.DeleteRequest">DeleteRequest</a></td>
                 <td><a href="#todo_service.DeleteResponse">DeleteResponse</a></td>
@@ -560,6 +546,54 @@
           </tbody>
         </table>
 
+        
+          
+          
+          <h4>Methods with HTTP bindings</h4>
+          <table>
+            <thead>
+              <tr>
+                <td>Method Name</td>
+                <td>Method</td>
+                <td>Pattern</td>
+                <td>Body</td>
+              </tr>
+            </thead>
+            <tbody>
+            
+              
+              
+              <tr>
+                <td>Get</td>
+                <td>GET</td>
+                <td>/todo</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>Add</td>
+                <td>POST</td>
+                <td>/todo</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>Delete</td>
+                <td>DELETE</td>
+                <td>/todo/{id}</td>
+                <td></td>
+              </tr>
+              
+            
+            </tbody>
+          </table>
+          
         
     
 

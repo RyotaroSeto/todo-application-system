@@ -1,0 +1,205 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "todo_service/todo_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "TodoApi"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/todo": {
+      "get": {
+        "operationId": "TodoApi_Get",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/todo_serviceGetResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "TodoApi"
+        ]
+      },
+      "post": {
+        "operationId": "TodoApi_Add",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/todo_serviceAddResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "todo.id",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "todo.title",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "todo.status",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "TODO_STATUS_UNSPECIFIED",
+              "TODO_STATUS_DOING",
+              "TODO_STATUS_DONE"
+            ],
+            "default": "TODO_STATUS_UNSPECIFIED"
+          },
+          {
+            "name": "todo.statusName",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TodoApi"
+        ]
+      }
+    },
+    "/todo/{id}": {
+      "delete": {
+        "operationId": "TodoApi_Delete",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/todo_serviceDeleteResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "TodoApi"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "todo_serviceAddResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "todo_serviceDeleteResponse": {
+      "type": "object"
+    },
+    "todo_serviceGetResponse": {
+      "type": "object",
+      "properties": {
+        "list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/todo_serviceTodo"
+          }
+        }
+      }
+    },
+    "todo_serviceTodo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/todo_serviceTodoStatus"
+        },
+        "statusName": {
+          "type": "string"
+        }
+      }
+    },
+    "todo_serviceTodoStatus": {
+      "type": "string",
+      "enum": [
+        "TODO_STATUS_UNSPECIFIED",
+        "TODO_STATUS_DOING",
+        "TODO_STATUS_DONE"
+      ],
+      "default": "TODO_STATUS_UNSPECIFIED"
+    }
+  }
+}

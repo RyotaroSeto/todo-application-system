@@ -18,7 +18,7 @@
   
     - [TodoStatus](#todo_service-TodoStatus)
   
-    - [TodoService](#todo_service-TodoService)
+    - [TodoApi](#todo_service-TodoApi)
   
 - [Scalar Value Types](#scalar-value-types)
 
@@ -200,17 +200,15 @@
  
 
 
-<a name="todo_service-TodoService"></a>
+<a name="todo_service-TodoApi"></a>
 
-### TodoService
+### TodoApi
 
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Get | [GetRequest](#todo_service-GetRequest) | [GetResponse](#todo_service-GetResponse) |  |
 | Add | [AddRequest](#todo_service-AddRequest) | [AddResponse](#todo_service-AddResponse) |  |
-| UpdateStatus | [UpdateStatusRequest](#todo_service-UpdateStatusRequest) | [UpdateStatusResponse](#todo_service-UpdateStatusResponse) |  |
-| UpdateTitle | [UpdateTitleRequest](#todo_service-UpdateTitleRequest) | [UpdateTitleResponse](#todo_service-UpdateTitleResponse) |  |
 | Delete | [DeleteRequest](#todo_service-DeleteRequest) | [DeleteResponse](#todo_service-DeleteResponse) |  |
 
  

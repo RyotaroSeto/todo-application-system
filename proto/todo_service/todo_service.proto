@@ -24,6 +24,7 @@ message AddRequest {
 }
 
 message AddResponse {
+  uint64 id = 1;
 }
 
 message UpdateStatusRequest {

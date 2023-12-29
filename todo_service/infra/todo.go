@@ -18,8 +18,9 @@ func NewTodoRepository() repository.Database {
 	}
 }
 
-func (r *TodoRepository) AddTodo(ctx context.Context, todo *model.Todo) error {
-	return r.db.Create(todo).Error
+func (r *TodoRepository) AddTodo(ctx context.Context, todo *model.Todo) (uint64, error) {
+	result := r.db.Create(todo)
+	return todo.ID, result.Error
 }
 
 func (r *TodoRepository) GetTodoList(ctx context.Context) (*model.Todo, error) {

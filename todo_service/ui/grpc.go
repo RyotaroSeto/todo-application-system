@@ -28,11 +28,12 @@ func (s *GRPCService) Get(ctx context.Context, req *pb.GetRequest) (*pb.GetRespo
 }
 
 func (s *GRPCService) Add(ctx context.Context, req *pb.AddRequest) (*pb.AddResponse, error) {
-	if err := s.todo.Add(ctx, toModelTodo(req.Todo)); err != nil {
+	id, err := s.todo.Add(ctx, toModelTodo(req.Todo))
+	if err != nil {
 		return nil, err
 	}
 
-	return &pb.AddResponse{}, nil
+	return &pb.AddResponse{Id: id}, nil
 }
 
 func (s *GRPCService) UpdateStatus(ctx context.Context, req *pb.UpdateStatusRequest) (*pb.UpdateStatusResponse, error) {

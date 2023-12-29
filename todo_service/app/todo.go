@@ -16,7 +16,7 @@ func NewTodoService(repo repository.Database) *TodoService {
 	}
 }
 
-func (s *TodoService) Add(ctx context.Context, todo *model.Todo) error {
+func (s *TodoService) Add(ctx context.Context, todo *model.Todo) (uint64, error) {
 	return s.repo.AddTodo(ctx, todo)
 }
 

@@ -16,6 +16,8 @@ env:
   DB_HOST: localhost
   DB_PORT: 5432
   DB_NAME: ${{ inputs.db_name }}
+  DBSSLMode: disable
+  DBTimeZone: Asia/Tokyo
 
 jobs:
   test:

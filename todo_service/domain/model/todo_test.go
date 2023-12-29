@@ -1,4 +1,4 @@
-package infra
+package model
 
 import (
 	"testing"
@@ -6,19 +6,21 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGet(t *testing.T) {
+func TestTodoTitle_String(t *testing.T) {
 	tests := []struct {
 		name string
-		want *DB
+		tr   TodoTitle
+		want string
 	}{
 		{
 			name: "success",
-			want: &DB{},
+			tr:   "test",
+			want: "test",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			assert.IsType(t, tt.want, Get())
+			assert.Equal(t, tt.want, tt.tr.String())
 		})
 	}
 }

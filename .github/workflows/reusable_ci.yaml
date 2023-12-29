@@ -16,18 +16,14 @@ env:
   DB_HOST: localhost
   DB_PORT: 5432
   DB_NAME: ${{ inputs.db_name }}
+  DBSSLMode: disable
+  DBTimeZone: Asia/Tokyo
 
 jobs:
   test:
     defaults:
       run:
         working-directory: ${{ env.ROOT }}
-
-    permissions:
-      pull-requests: write
-      contents: write
-      packages: write
-      actions: write
 
     name: CI
     runs-on: ubuntu-latest

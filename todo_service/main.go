@@ -20,12 +20,16 @@ func main() {
 	ctx, cancel := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer cancel()
 
-	repo, err := infra.LoadConfig(ctx)
+	cfg, err := infra.LoadConfig(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	l, err := net.Listen("tcp", fmt.Sprintf(":%s", repo.Port))
+	if err = infra.DBConnect(cfg.DNS(), cfg.DBMaxConn, cfg.DBMaxIdle); err != nil {
+		log.Fatal(err)
+	}
+
+	l, err := net.Listen("tcp", fmt.Sprintf(":%s", cfg.Port))
 	if err != nil {
 		log.Fatal(err)
 	}

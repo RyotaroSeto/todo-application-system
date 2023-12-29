@@ -2,6 +2,7 @@ package infra
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/sethvargo/go-envconfig"
 )
@@ -33,4 +34,11 @@ func LoadConfig(ctx context.Context) (*Config, error) {
 
 func GetConfig() *Config {
 	return c
+}
+
+func (r *Config) DNS() string {
+	return fmt.Sprintf(
+		"host=%s user=%s password=%s dbname=%s port=%s sslmode=%s TimeZone=%s",
+		r.DBHost, r.DBUser, r.DBPassword, r.DBName, r.DBPort, r.DBSSLMode, r.DBTimeZone,
+	)
 }

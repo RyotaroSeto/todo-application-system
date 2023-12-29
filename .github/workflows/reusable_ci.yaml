@@ -23,12 +23,6 @@ jobs:
       run:
         working-directory: ${{ env.ROOT }}
 
-    permissions:
-      pull-requests: write
-      contents: write
-      packages: write
-      actions: write
-
     name: CI
     runs-on: ubuntu-latest
 

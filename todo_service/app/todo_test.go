@@ -213,7 +213,6 @@ func TestTodoService_UpdateStatus(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			ctrl := gomock.NewController(t)
 			tt.fields.repo = repository.NewMockDatabase(ctrl)
-
 			if tt.setup != nil {
 				tt.setup(&tt.fields)
 			}

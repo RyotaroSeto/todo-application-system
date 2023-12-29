@@ -13,6 +13,7 @@ import (
 	"todo_service/ui"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -49,5 +50,7 @@ func setupServer(ctx context.Context) *grpc.Server {
 			app.NewTodoService(todo),
 		),
 	)
+	reflection.Register(svr)
+
 	return svr
 }

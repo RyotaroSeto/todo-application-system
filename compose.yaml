@@ -12,26 +12,31 @@ services:
   #   depends_on:
   #     - gateway
 
-  # todo_service:
-  #   container_name: todo_service
-  #   build:
-  #     context: ./todo_service
-  #     dockerfile: Dockerfile
-  #     target: dev
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     - ./:/app:delegated
-  #   environment:
-  #     DB_HOST: db
-  #     DB_PORT: 5432
-  #     DB_USER: todo
-  #     DB_PASSWORD: todo
-  #     DB_NAME: todo_db
-  #     DB_SSL_MODE: disable
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
+  todo_service:
+    container_name: todo_service
+    build:
+      context: ./todo_service
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/app:delegated
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: todo
+      DB_PASSWORD: todo
+      DB_NAME: todo_db
+      DB_SSL_MODE: disable
+    working_dir: /app/todo_service
+    command:
+      - go
+      - run
+      - main.go
+    # depends_on:
+    #   db:
+    #     condition: service_healthy
 
   # auth_service:
   #   container_name: auth_service

@@ -2,17 +2,17 @@ package ui
 
 import (
 	"context"
+	pb "gen/go/todo"
 	"todo_service/domain/model"
 	"todo_service/domain/service"
-	pb "todo_service/proto"
 )
 
 type GRPCService struct {
-	pb.UnimplementedTodoServiceServer
+	pb.UnimplementedTodoApiServer
 	todo service.Todo
 }
 
-func NewGRPCService(todo service.Todo) pb.TodoServiceServer {
+func NewGRPCService(todo service.Todo) pb.TodoApiServer {
 	return &GRPCService{todo: todo}
 }
 

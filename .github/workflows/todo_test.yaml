@@ -1,0 +1,19 @@
+name: Todo Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches-ignore:
+      - main
+    paths:
+      - 'todo_service/**/*.go'
+      - 'todo_service/**/go.*'
+      - 'gen/go/todo/*.go'
+
+jobs:
+  todo_service:
+    name: Todo Service
+    uses: './.github/workflows/reusable_ci.yaml'
+    with:
+      root: 'todo_service'
+      db_name: 'todo_db'

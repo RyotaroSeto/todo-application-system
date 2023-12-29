@@ -10,14 +10,14 @@ export const TodoItem = ({
   deleteTodoListItem: any
 }) => {
   const handleToggleTodoListItemStatus = () =>
-    toggleTodoListItemStatus(todo.id, todo.done)
+    toggleTodoListItemStatus(todo.id, todo.status_name)
   const handleDeleteTodoListItem = () => deleteTodoListItem(todo.id)
 
   return (
     <>
-      {todo.content}
+      {todo.title}
       <button onClick={handleToggleTodoListItemStatus}>
-        {todo.done ? 'Doing' : 'Done'}
+        {todo.status_name === 'Doing' ? 'Done' : 'Doing'}
       </button>
       <button onClick={handleDeleteTodoListItem}>Delete</button>
     </>

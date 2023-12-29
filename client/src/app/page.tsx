@@ -24,9 +24,10 @@ export default function Home() {
   }
 
   // 未完了リスト
-  const incompletedList = todoList.filter((todo: Todo) => !todo.done)
+  const incompletedList = todoList.filter((todo: Todo) => todo.status_id === 1)
+
   // 完了リスト
-  const completedList = todoList.filter((todo: Todo) => todo.done)
+  const completedList = todoList.filter((todo: Todo) => todo.status_id === 2)
 
   return (
     <>

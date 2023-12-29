@@ -1,8 +1,8 @@
 CREATE ROLE todo WITH LOGIN PASSWORD 'todo';
 
-CREATE DATABASE todo;
+CREATE DATABASE todo_db;
 
-\c todo
+\c todo_db
 
 CREATE SCHEMA todo;
 

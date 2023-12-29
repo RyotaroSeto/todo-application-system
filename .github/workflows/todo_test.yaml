@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - 'todo_service/**/*.go'
+      - 'todo_service/**/**/*.go'
       - 'todo_service/**/go.*'
       - 'gen/go/todo/*.go'
 

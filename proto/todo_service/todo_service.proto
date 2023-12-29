@@ -6,8 +6,9 @@ package todo_service;
 
 service TodoService {
   rpc Get(GetRequest) returns (GetResponse) {}
-  rpc Create(CreateRequest) returns (CreateResponse) {}
+  rpc Add(AddRequest) returns (AddResponse) {}
   rpc UpdateStatus(UpdateStatusRequest) returns (UpdateStatusResponse) {}
+  rpc UpdateTitle(UpdateTitleRequest) returns (UpdateTitleResponse) {}
   rpc Delete(DeleteRequest) returns (DeleteResponse) {}
 }
 
@@ -18,11 +19,11 @@ message GetResponse {
   Todo todo = 1;
 }
 
-message CreateRequest {
+message AddRequest {
   Todo todo = 1;
 }
 
-message CreateResponse {
+message AddResponse {
 }
 
 message UpdateStatusRequest {
@@ -31,6 +32,14 @@ message UpdateStatusRequest {
 }
 
 message UpdateStatusResponse {
+}
+
+message UpdateTitleRequest {
+  uint64 id = 1;
+  string title = 2;
+}
+
+message UpdateTitleResponse {
 }
 
 message DeleteRequest {

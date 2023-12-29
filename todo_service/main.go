@@ -7,6 +7,7 @@ import (
 	"net"
 	"os/signal"
 	"syscall"
+	"todo_service/app"
 	"todo_service/infra"
 	pb "todo_service/proto"
 	"todo_service/ui"
@@ -40,10 +41,13 @@ func main() {
 }
 
 func setupServer() *grpc.Server {
+	todo := infra.NewTodoRepository()
 	svr := grpc.NewServer()
 	pb.RegisterTodoServiceServer(
 		svr,
-		ui.NewGRPCService(),
+		ui.NewGRPCService(
+			app.NewTodoService(todo),
+		),
 	)
 	return svr
 }

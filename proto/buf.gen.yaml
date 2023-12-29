@@ -12,4 +12,4 @@ plugins:
     out: ../
   - name: go-grpc
     out: ../
-    opt: generate_unbound_methods=true
+    # opt: generate_unbound_methods=true

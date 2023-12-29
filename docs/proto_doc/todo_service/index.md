@@ -4,8 +4,8 @@
 ## Table of Contents
 
 - [todo_service/todo_service.proto](#todo_service_todo_service-proto)
-    - [CreateRequest](#todo_service-CreateRequest)
-    - [CreateResponse](#todo_service-CreateResponse)
+    - [AddRequest](#todo_service-AddRequest)
+    - [AddResponse](#todo_service-AddResponse)
     - [DeleteRequest](#todo_service-DeleteRequest)
     - [DeleteResponse](#todo_service-DeleteResponse)
     - [GetRequest](#todo_service-GetRequest)
@@ -13,6 +13,8 @@
     - [Todo](#todo_service-Todo)
     - [UpdateStatusRequest](#todo_service-UpdateStatusRequest)
     - [UpdateStatusResponse](#todo_service-UpdateStatusResponse)
+    - [UpdateTitleRequest](#todo_service-UpdateTitleRequest)
+    - [UpdateTitleResponse](#todo_service-UpdateTitleResponse)
   
     - [TodoStatus](#todo_service-TodoStatus)
   
@@ -29,9 +31,9 @@
 
 
 
-<a name="todo_service-CreateRequest"></a>
+<a name="todo_service-AddRequest"></a>
 
-### CreateRequest
+### AddRequest
 
 
 
@@ -44,9 +46,9 @@
 
 
 
-<a name="todo_service-CreateResponse"></a>
+<a name="todo_service-AddResponse"></a>
 
-### CreateResponse
+### AddResponse
 
 
 
@@ -146,6 +148,32 @@
 
 
 
+
+<a name="todo_service-UpdateTitleRequest"></a>
+
+### UpdateTitleRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
+| title | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="todo_service-UpdateTitleResponse"></a>
+
+### UpdateTitleResponse
+
+
+
+
+
+
  
 
 
@@ -157,7 +185,7 @@
 | Name | Number | Description |
 | ---- | ------ | ----------- |
 | TODO_STATUS_UNSPECIFIED | 0 |  |
-| TODO_STATUS_PROGRESS | 1 |  |
+| TODO_STATUS_DOING | 1 |  |
 | TODO_STATUS_DONE | 2 |  |
 
 
@@ -174,8 +202,9 @@
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
 | Get | [GetRequest](#todo_service-GetRequest) | [GetResponse](#todo_service-GetResponse) |  |
-| Create | [CreateRequest](#todo_service-CreateRequest) | [CreateResponse](#todo_service-CreateResponse) |  |
+| Add | [AddRequest](#todo_service-AddRequest) | [AddResponse](#todo_service-AddResponse) |  |
 | UpdateStatus | [UpdateStatusRequest](#todo_service-UpdateStatusRequest) | [UpdateStatusResponse](#todo_service-UpdateStatusResponse) |  |
+| UpdateTitle | [UpdateTitleRequest](#todo_service-UpdateTitleRequest) | [UpdateTitleResponse](#todo_service-UpdateTitleResponse) |  |
 | Delete | [DeleteRequest](#todo_service-DeleteRequest) | [DeleteResponse](#todo_service-DeleteResponse) |  |
 
  

@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	pb "gen/go/todo"
 	"log"
 	"net"
 	"os/signal"
 	"syscall"
 	"todo_service/app"
 	"todo_service/infra"
-	pb "todo_service/proto"
 	"todo_service/ui"
 
 	"google.golang.org/grpc"
@@ -29,7 +29,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	svr := setupServer()
+	svr := setupServer(ctx)
 	go func() {
 		<-ctx.Done()
 		svr.GracefulStop()
@@ -40,10 +40,10 @@ func main() {
 	}
 }
 
-func setupServer() *grpc.Server {
+func setupServer(ctx context.Context) *grpc.Server {
 	todo := infra.NewTodoRepository()
 	svr := grpc.NewServer()
-	pb.RegisterTodoServiceServer(
+	pb.RegisterTodoApiServer(
 		svr,
 		ui.NewGRPCService(
 			app.NewTodoService(todo),

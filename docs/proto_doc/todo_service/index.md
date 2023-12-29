@@ -104,7 +104,7 @@
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| todo | [Todo](#todo_service-Todo) |  |  |
+| list | [Todo](#todo_service-Todo) | repeated |  |
 
 
 
@@ -122,6 +122,7 @@
 | id | [uint64](#uint64) |  |  |
 | title | [string](#string) |  |  |
 | status | [TodoStatus](#todo_service-TodoStatus) |  |  |
+| status_name | [string](#string) |  |  |
 
 
 

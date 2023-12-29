@@ -16,7 +16,7 @@ message GetRequest {
 }
 
 message GetResponse {
-  Todo todo = 1;
+  repeated Todo list = 1;
 }
 
 message AddRequest {
@@ -54,6 +54,7 @@ message Todo {
   uint64 id = 1;
   string title = 2;
   TodoStatus status = 3;
+  string status_name = 4;
 }
 
 enum TodoStatus {

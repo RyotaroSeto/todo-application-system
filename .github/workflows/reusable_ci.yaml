@@ -16,8 +16,10 @@ env:
   DB_HOST: localhost
   DB_PORT: 5432
   DB_NAME: ${{ inputs.db_name }}
-  DBSSLMode: disable
-  DBTimeZone: Asia/Tokyo
+  DB_SSL_MODE: disable
+  DB_TIME_ZONE: Asia/Tokyo
+  REDIS_HOST: localhost
+  REDIS_PORT: 6379
 
 jobs:
   test:

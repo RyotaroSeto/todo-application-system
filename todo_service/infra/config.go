@@ -14,7 +14,7 @@ type Config struct {
 	DBHost     string `env:"DB_HOST,required"`
 	DBPort     string `env:"DB_PORT,required"`
 	DBName     string `env:"DB_NAME,required"`
-	DBSSLMode  string `env:"DB_SSM_MODE,default=disable"`
+	DBSSLMode  string `env:"DB_SSL_MODE,default=disable"`
 	DBTimeZone string `env:"DB_TIME_ZONE,default=Asia/Tokyo"`
 	DBMaxConn  int    `env:"DB_MAX_CONN,default=0"`
 	DBMaxIdle  int    `env:"DB_MAX_IDLE,default=0"`

@@ -1,10 +1,10 @@
 package cache
 
 import (
-	"auth_service/domain/repository"
-	"auth_service/infra/config"
 	"context"
 	"fmt"
+	"user_service/domain/repository"
+	"user_service/infra/config"
 
 	"github.com/redis/go-redis/v9"
 )

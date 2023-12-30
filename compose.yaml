@@ -57,7 +57,7 @@ services:
       - main.go
     depends_on:
       - todo_service
-    # - auth_service
+    # - user_service
 
   db:
     container_name: db
@@ -79,24 +79,29 @@ services:
       timeout: 5s
       retries: 60
 
-  # auth_service:
-  #   container_name: auth_service
-  #   build:
-  #     context: ./auth_service
-  #     dockerfile: Dockerfile
-  #     target: dev
-  #   environment:
-  #     REDIS_HOST: redis
-  #     REDIS_PORT: 6379
-  #   ports:
-  #     - 3002:8080
-  #   volumes:
-  #     - ./:/app:delegated
-  #   depends_on:
-  #     redis:
-  #       condition: service_healthy
-  #     db:
-  #       condition: service_healthy
+  user_service:
+    container_name: user_service
+    build:
+      context: ./user_service
+      dockerfile: Dockerfile
+      target: dev
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    ports:
+      - 3002:3002
+    volumes:
+      - ./:/app:delegated
+    working_dir: /app/user_service
+    command:
+      - go
+      - run
+      - main.go
+    depends_on:
+      db:
+        condition: service_healthy
+      # redis:
+      #   condition: service_healthy
 
   # redis:
   #   container_name: redis

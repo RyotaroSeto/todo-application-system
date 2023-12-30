@@ -3,12 +3,14 @@ import { Todo } from '../model/Todo'
 const todoDataUrl = 'http://localhost:2000/todo'
 
 export const getAllTodosData = async () => {
-  // const response = await fetch(todoDataUrl, {
-  //   method: 'GET',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // })
+  const response = await fetch(todoDataUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+  console.log(1)
+  console.log(response.json())
   //   return await fetch(todoDataUrl, {
   //     method: 'GET',
   //     headers: {
@@ -38,13 +40,13 @@ export const getAllTodosData = async () => {
 }
 
 export const addTodoData = async (todo: Todo) => {
-  // const response = await fetch(todoDataUrl, {
-  //   method: 'POST',
-  //   body: JSON.stringify(todo),
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // })
+  const response = await fetch(todoDataUrl, {
+    method: 'POST',
+    body: JSON.stringify(todo),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
   return {
     id: '4',
     title: 'title4',

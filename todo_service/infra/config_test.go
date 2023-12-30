@@ -16,7 +16,7 @@ func TestLoadConfig(t *testing.T) {
 	DBHost := os.Getenv("DB_HOST")
 	DBPort := os.Getenv("DB_PORT")
 	DBName := os.Getenv("DB_NAME")
-	DBSSLMode := os.Getenv("DB_SSM_MODE")
+	DBSSLMode := os.Getenv("DB_SSL_MODE")
 	DBTimeZone := os.Getenv("DB_TIME_ZONE")
 	DBMaxConn := os.Getenv("DB_MAX_CONN")
 	DBMaxIdle := os.Getenv("DB_MAX_IDLE")
@@ -28,7 +28,7 @@ func TestLoadConfig(t *testing.T) {
 		os.Setenv("DB_HOST", DBHost)
 		os.Setenv("DB_PORT", DBPort)
 		os.Setenv("DB_NAME", DBName)
-		os.Setenv("DB_SSM_MODE", DBSSLMode)
+		os.Setenv("DB_SSL_MODE", DBSSLMode)
 		os.Setenv("DB_TIME_ZONE", DBTimeZone)
 		os.Setenv("DB_MAX_CONN", DBMaxConn)
 		os.Setenv("DB_MAX_IDLE", DBMaxIdle)
@@ -98,7 +98,7 @@ func TestLoadConfig(t *testing.T) {
 			os.Unsetenv("DB_HOST")
 			os.Unsetenv("DB_PORT")
 			os.Unsetenv("DB_NAME")
-			os.Unsetenv("DB_SSM_MODE")
+			os.Unsetenv("DB_SSL_MODE")
 			os.Unsetenv("DB_TIME_ZONE")
 			os.Unsetenv("DB_MAX_CONN")
 			os.Unsetenv("DB_MAX_IDLE")
@@ -122,7 +122,7 @@ func TestLoadConfig(t *testing.T) {
 				os.Setenv("DB_NAME", tt.DBName)
 			}
 			if tt.DBSSLMode != "" {
-				os.Setenv("DB_SSM_MODE", tt.DBSSLMode)
+				os.Setenv("DB_SSL_MODE", tt.DBSSLMode)
 			}
 			if tt.DBTimeZone != "" {
 				os.Setenv("DB_TIME_ZONE", tt.DBTimeZone)

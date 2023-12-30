@@ -1,0 +1,18 @@
+name: User Test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'user_service/**/*.go'
+      - 'user_service/**/**/*.go'
+      - 'user_service/**/go.*'
+      - 'gen/go/user/*.go'
+
+jobs:
+  user_service:
+    name: User Service
+    uses: './.github/workflows/reusable_ci.yaml'
+    with:
+      root: 'user_service'
+      db_name: 'user_db'

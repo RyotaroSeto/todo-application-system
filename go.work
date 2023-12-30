@@ -1,7 +1,7 @@
 go 1.21.1
 
 use (
-	./auth_service
+	./user_service
 	./todo_service
 	./gateway
 	./gen

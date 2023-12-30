@@ -53,7 +53,6 @@ func TestTodoRepository_AddTodo(t *testing.T) {
 				db: Get(),
 			}
 			var beforeCount, afterCount int64
-
 			r.db.Model(&model.Todo{}).Count(&beforeCount)
 			got, err := r.AddTodo(context.Background(), tt.args.todo)
 			tt.assertion(t, err)

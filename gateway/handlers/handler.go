@@ -36,23 +36,7 @@ func NewHandler(ctx context.Context) (http.Handler, error) {
 
 	mux := http.NewServeMux()
 
-	// mux.HandleFunc("/todo", corsMiddleware(todoHandler))
 	mux.Handle("/docs/", docsProxy)
-	mux.Handle("/", grpcGateway)
+	mux.Handle("/", corsMiddleware(grpcGateway))
 	return mux, nil
 }
-
-// func todoHandler(w http.ResponseWriter, r *http.Request) {
-// 	switch r.Method {
-// 	case http.MethodGet:
-// 		fmt.Fprint(w, "GET hello!\n")
-// 	case http.MethodPost:
-// 		fmt.Fprint(w, "POST hello!\n")
-// 	case http.MethodPut:
-// 		fmt.Fprint(w, "PUT hello!\n")
-// 	case http.MethodDelete:
-// 		fmt.Fprint(w, "DELETE hello!\n")
-// 	default:
-// 		fmt.Fprint(w, "Method not allowed.\n")
-// 	}
-// }

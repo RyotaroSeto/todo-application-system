@@ -9,7 +9,9 @@ import (
 )
 
 type Config struct {
-	Port string `env:"PORT,default=2000"`
+	Port    string `env:"PORT,default=2000"`
+	TodoURL string `env:"TODO_URL,required"`
+	UserURL string `env:"USER_URL,required"`
 }
 
 var c *Config

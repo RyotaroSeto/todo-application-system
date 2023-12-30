@@ -29,7 +29,7 @@ func run(ctx context.Context) error {
 		return err
 	}
 
-	mux, err := handlers.NewHandler(ctx)
+	mux, err := handlers.NewHandler(ctx, cfg)
 	if err != nil {
 		return err
 	}

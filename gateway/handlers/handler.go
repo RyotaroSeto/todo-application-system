@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"context"
+	"gateway/configs"
 	"gen/go/todo"
 	"net/http"
 	"net/http/httputil"
@@ -11,20 +12,18 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	// "google.golang.org/grpc/health/grpc_health_v1"
 )
 
-const (
-	grpcServerAddress = "todo_service:8080"
-	docsServerAddress = "http://docs-server:8080"
-)
+const docsServerAddress = "http://docs-server:8080"
 
-func NewHandler(ctx context.Context) (http.Handler, error) {
+func NewHandler(ctx context.Context, cfg *configs.Config) (http.Handler, error) {
 	grpcGateway := runtime.NewServeMux()
 	opts := []grpc.DialOption{
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	}
 
-	if err := todo.RegisterTodoApiHandlerFromEndpoint(ctx, grpcGateway, grpcServerAddress, opts); err != nil {
+	if err := todo.RegisterTodoApiHandlerFromEndpoint(ctx, grpcGateway, cfg.TodoURL, opts); err != nil {
 		return nil, err
 	}
 
@@ -37,6 +36,14 @@ func NewHandler(ctx context.Context) (http.Handler, error) {
 	mux := http.NewServeMux()
 
 	mux.Handle("/docs/", docsProxy)
+	mux.Handle("/helthcheck", helthcheck())
 	mux.Handle("/", corsMiddleware(grpcGateway))
 	return mux, nil
 }
+
+func helthcheck() http.Handler {
+	return nil
+}
+
+// grpc gateway health check　でググると一番上に出てくる
+// func ()

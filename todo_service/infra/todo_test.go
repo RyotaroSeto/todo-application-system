@@ -2,7 +2,6 @@ package infra
 
 import (
 	"context"
-	"log"
 	"testing"
 	"todo_service/domain/model"
 	"todo_service/domain/repository"
@@ -54,10 +53,6 @@ func TestTodoRepository_AddTodo(t *testing.T) {
 				db: Get(),
 			}
 			var beforeCount, afterCount int64
-			log.Println("--------------")
-			log.Println(r)
-			log.Println(r.db)
-			log.Println("--------------")
 			r.db.Model(&model.Todo{}).Count(&beforeCount)
 			got, err := r.AddTodo(context.Background(), tt.args.todo)
 			tt.assertion(t, err)

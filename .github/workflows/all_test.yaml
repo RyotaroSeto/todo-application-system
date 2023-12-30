@@ -21,3 +21,4 @@ jobs:
     uses: './.github/workflows/reusable_ci.yaml'
     with:
       root: 'todo_service'
+      db_name: 'todo_db'

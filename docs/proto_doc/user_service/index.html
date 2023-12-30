@@ -187,11 +187,11 @@
                 </li>
               
                 <li>
-                  <a href="#user_service.RegiserResponse"><span class="badge">M</span>RegiserResponse</a>
+                  <a href="#user_service.RegisterRequest"><span class="badge">M</span>RegisterRequest</a>
                 </li>
               
                 <li>
-                  <a href="#user_service.RegisertRequest"><span class="badge">M</span>RegisertRequest</a>
+                  <a href="#user_service.RegisterResponse"><span class="badge">M</span>RegisterResponse</a>
                 </li>
               
               
@@ -271,31 +271,7 @@
 
         
       
-        <h3 id="user_service.RegiserResponse">RegiserResponse</h3>
-        <p></p>
-
-        
-          <table class="field-table">
-            <thead>
-              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
-            </thead>
-            <tbody>
-              
-                <tr>
-                  <td>id</td>
-                  <td><a href="#uint64">uint64</a></td>
-                  <td></td>
-                  <td><p> </p></td>
-                </tr>
-              
-            </tbody>
-          </table>
-
-          
-
-        
-      
-        <h3 id="user_service.RegisertRequest">RegisertRequest</h3>
+        <h3 id="user_service.RegisterRequest">RegisterRequest</h3>
         <p></p>
 
         
@@ -333,6 +309,30 @@
 
         
       
+        <h3 id="user_service.RegisterResponse">RegisterResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>id</td>
+                  <td><a href="#uint64">uint64</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
 
       
 
@@ -348,9 +348,9 @@
           <tbody>
             
               <tr>
-                <td>Regiser</td>
-                <td><a href="#user_service.RegisertRequest">RegisertRequest</a></td>
-                <td><a href="#user_service.RegiserResponse">RegiserResponse</a></td>
+                <td>Register</td>
+                <td><a href="#user_service.RegisterRequest">RegisterRequest</a></td>
+                <td><a href="#user_service.RegisterResponse">RegisterResponse</a></td>
                 <td><p></p></td>
               </tr>
             
@@ -382,9 +382,9 @@
               
               
               <tr>
-                <td>Regiser</td>
+                <td>Register</td>
                 <td>POST</td>
-                <td>/use/regiser</td>
+                <td>/use/register</td>
                 <td></td>
               </tr>
               

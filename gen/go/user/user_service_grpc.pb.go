@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	UserApi_Regiser_FullMethodName = "/user_service.UserApi/Regiser"
-	UserApi_Login_FullMethodName   = "/user_service.UserApi/Login"
+	UserApi_Register_FullMethodName = "/user_service.UserApi/Register"
+	UserApi_Login_FullMethodName    = "/user_service.UserApi/Login"
 )
 
 // UserApiClient is the client API for UserApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserApiClient interface {
-	Regiser(ctx context.Context, in *RegisertRequest, opts ...grpc.CallOption) (*RegiserResponse, error)
+	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
@@ -39,9 +39,9 @@ func NewUserApiClient(cc grpc.ClientConnInterface) UserApiClient {
 	return &userApiClient{cc}
 }
 
-func (c *userApiClient) Regiser(ctx context.Context, in *RegisertRequest, opts ...grpc.CallOption) (*RegiserResponse, error) {
-	out := new(RegiserResponse)
-	err := c.cc.Invoke(ctx, UserApi_Regiser_FullMethodName, in, out, opts...)
+func (c *userApiClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+	out := new(RegisterResponse)
+	err := c.cc.Invoke(ctx, UserApi_Register_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +61,7 @@ func (c *userApiClient) Login(ctx context.Context, in *LoginRequest, opts ...grp
 // All implementations must embed UnimplementedUserApiServer
 // for forward compatibility
 type UserApiServer interface {
-	Regiser(context.Context, *RegisertRequest) (*RegiserResponse, error)
+	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	mustEmbedUnimplementedUserApiServer()
 }
@@ -70,8 +70,8 @@ type UserApiServer interface {
 type UnimplementedUserApiServer struct {
 }
 
-func (UnimplementedUserApiServer) Regiser(context.Context, *RegisertRequest) (*RegiserResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Regiser not implemented")
+func (UnimplementedUserApiServer) Register(context.Context, *RegisterRequest) (*RegisterResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
 func (UnimplementedUserApiServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
@@ -89,20 +89,20 @@ func RegisterUserApiServer(s grpc.ServiceRegistrar, srv UserApiServer) {
 	s.RegisterService(&UserApi_ServiceDesc, srv)
 }
 
-func _UserApi_Regiser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisertRequest)
+func _UserApi_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserApiServer).Regiser(ctx, in)
+		return srv.(UserApiServer).Register(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserApi_Regiser_FullMethodName,
+		FullMethod: UserApi_Register_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserApiServer).Regiser(ctx, req.(*RegisertRequest))
+		return srv.(UserApiServer).Register(ctx, req.(*RegisterRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -133,8 +133,8 @@ var UserApi_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Regiser",
-			Handler:    _UserApi_Regiser_Handler,
+			MethodName: "Register",
+			Handler:    _UserApi_Register_Handler,
 		},
 		{
 			MethodName: "Login",

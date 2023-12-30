@@ -52,14 +52,14 @@
         ]
       }
     },
-    "/use/regiser": {
+    "/use/register": {
       "post": {
-        "operationId": "UserApi_Regiser",
+        "operationId": "UserApi_Register",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/user_serviceRegiserResponse"
+              "$ref": "#/definitions/user_serviceRegisterResponse"
             }
           },
           "default": {
@@ -131,7 +131,7 @@
         }
       }
     },
-    "user_serviceRegiserResponse": {
+    "user_serviceRegisterResponse": {
       "type": "object",
       "properties": {
         "id": {

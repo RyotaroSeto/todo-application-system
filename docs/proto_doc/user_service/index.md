@@ -6,8 +6,8 @@
 - [user_service/user_service.proto](#user_service_user_service-proto)
     - [LoginRequest](#user_service-LoginRequest)
     - [LoginResponse](#user_service-LoginResponse)
-    - [RegiserResponse](#user_service-RegiserResponse)
-    - [RegisertRequest](#user_service-RegisertRequest)
+    - [RegisterRequest](#user_service-RegisterRequest)
+    - [RegisterResponse](#user_service-RegisterResponse)
   
     - [UserApi](#user_service-UserApi)
   
@@ -53,24 +53,9 @@
 
 
 
-<a name="user_service-RegiserResponse"></a>
+<a name="user_service-RegisterRequest"></a>
 
-### RegiserResponse
-
-
-
-| Field | Type | Label | Description |
-| ----- | ---- | ----- | ----------- |
-| id | [uint64](#uint64) |  |  |
-
-
-
-
-
-
-<a name="user_service-RegisertRequest"></a>
-
-### RegisertRequest
+### RegisterRequest
 
 
 
@@ -79,6 +64,21 @@
 | user_name | [string](#string) |  |  |
 | password | [string](#string) |  |  |
 | role | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="user_service-RegisterResponse"></a>
+
+### RegisterResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| id | [uint64](#uint64) |  |  |
 
 
 
@@ -98,7 +98,7 @@
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| Regiser | [RegisertRequest](#user_service-RegisertRequest) | [RegiserResponse](#user_service-RegiserResponse) |  |
+| Register | [RegisterRequest](#user_service-RegisterRequest) | [RegisterResponse](#user_service-RegisterResponse) |  |
 | Login | [LoginRequest](#user_service-LoginRequest) | [LoginResponse](#user_service-LoginResponse) |  |
 
  

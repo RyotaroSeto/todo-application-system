@@ -54,6 +54,10 @@ jobs:
       - name: Go mod download
         run: go mod download
 
+      - name: Database setup
+        working-directory: ./
+        run: psql -f .docker/db/init.sql -U postgres -h localhost -p 5432
+
       - name: Build
         run: go build -v ./...
 

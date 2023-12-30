@@ -71,7 +71,7 @@ func toPbTodoList(todoList *model.Todos) []*pb.Todo {
 			Id:         todo.ID,
 			Title:      string(todo.Title),
 			Status:     pb.TodoStatus(pb.TodoStatus_value[todo.String()]),
-			StatusName: todo.String(),
+			StatusName: todo.ShortString(),
 		})
 	}
 	return list

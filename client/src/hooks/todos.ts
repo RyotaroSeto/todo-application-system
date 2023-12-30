@@ -1,9 +1,8 @@
 import { Todo } from '../model/Todo'
-
-const todoDataUrl = 'http://localhost:2000/todo'
+import { lookupEnvTodoURL } from '../model/lookup-env'
 
 export const getAllTodosData = async () => {
-  const response = await fetch(todoDataUrl, {
+  const response = await fetch(lookupEnvTodoURL(), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +39,7 @@ export const getAllTodosData = async () => {
 }
 
 export const addTodoData = async (todo: Todo) => {
-  const response = await fetch(todoDataUrl, {
+  const response = await fetch(lookupEnvTodoURL(), {
     method: 'POST',
     body: JSON.stringify(todo),
     headers: {

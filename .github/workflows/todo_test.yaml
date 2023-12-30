@@ -3,8 +3,6 @@ name: Todo Test
 on:
   workflow_dispatch:
   pull_request:
-    branches-ignore:
-      - main
     paths:
       - 'todo_service/**/*.go'
       - 'todo_service/**/**/*.go'

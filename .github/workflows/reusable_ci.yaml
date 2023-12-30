@@ -20,6 +20,8 @@ env:
   DB_TIME_ZONE: Asia/Tokyo
   REDIS_HOST: localhost
   REDIS_PORT: 6379
+  TODO_URL: todo_service:8080
+  USER_URL: user_service:3002
 
 jobs:
   test:

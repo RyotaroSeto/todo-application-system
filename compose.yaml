@@ -10,6 +10,8 @@ services:
     volumes:
       - ./client:/app
       - ./client/node_modules:/app/node_modules
+    environment:
+      TODO_URL: http://gateway:2000/todo
     depends_on:
       - gateway
 
@@ -50,6 +52,9 @@ services:
       - 2000:2000
     volumes:
       - ./:/app:delegated
+    environment:
+      TODO_URL: todo_service:8080
+      USER_URL: user_service:3002
     working_dir: /app/gateway
     command:
       - go

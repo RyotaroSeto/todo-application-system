@@ -2,9 +2,7 @@ name: Gateway Test
 
 on:
   workflow_dispatch:
-  push:
-    branches-ignore:
-      - main
+  pull_request:
     paths:
       - 'gateway/**/*.go'
       - 'gateway/**/go.*'

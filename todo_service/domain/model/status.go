@@ -1,15 +1,24 @@
 package model
 
-import "time"
+import (
+	"strings"
+	"time"
+)
 
 //go:generate go run github.com/dmarkham/enumer -type=TodoStatus -text -json -transform=snake-upper
 type TodoStatus uint
+
+const todoStatusNamePrefix = "TODO_STATUS_"
 
 const (
 	TodoStatusUnspecified TodoStatus = iota
 	TodoStatusDoing
 	TodoStatusDone
 )
+
+func (s TodoStatus) ShortString() string {
+	return strings.ReplaceAll(s.String(), todoStatusNamePrefix, "")
+}
 
 type Status struct {
 	ID        TodoStatus `gorm:"primaryKey"`

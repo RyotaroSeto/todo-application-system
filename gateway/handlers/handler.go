@@ -12,7 +12,6 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	// "google.golang.org/grpc/health/grpc_health_v1"
 )
 
 const docsServerAddress = "http://docs-server:8080"
@@ -36,14 +35,11 @@ func NewHandler(ctx context.Context, cfg *configs.Config) (http.Handler, error) 
 	mux := http.NewServeMux()
 
 	mux.Handle("/docs/", docsProxy)
-	mux.Handle("/helthcheck", helthcheck())
 	mux.Handle("/", corsMiddleware(grpcGateway))
+	mux.Handle("/helthcheck", http.HandlerFunc(healthCheckHandler))
 	return mux, nil
 }
 
-func helthcheck() http.Handler {
-	return nil
+func healthCheckHandler(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
 }
-
-// grpc gateway health check　でググると一番上に出てくる
-// func ()

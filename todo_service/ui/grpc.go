@@ -5,6 +5,9 @@ import (
 	pb "gen/go/todo"
 	"todo_service/domain/model"
 	"todo_service/domain/service"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 type GRPCService struct {
@@ -55,6 +58,16 @@ func (s *GRPCService) Delete(ctx context.Context, req *pb.DeleteRequest) (*pb.De
 		return nil, err
 	}
 	return &pb.DeleteResponse{}, nil
+}
+
+func (s *GRPCService) HealthCheck(ctx context.Context, req *pb.HealthCheckRequest) (*pb.HealthCheckResponse, error) {
+	return &pb.HealthCheckResponse{
+		Status: pb.HealthCheckResponse_SERVING,
+	}, nil
+}
+
+func (s *GRPCService) Watch(req *pb.HealthCheckRequest, stream pb.TodoApi_WatchServer) error {
+	return status.Error(codes.Unimplemented, "service watch is not implemented current version.")
 }
 
 func toModelTodo(req *pb.Todo) *model.Todo {

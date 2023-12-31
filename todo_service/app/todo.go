@@ -4,11 +4,14 @@ import (
 	"context"
 	"todo_service/domain/model"
 	"todo_service/domain/repository"
+	"todo_service/domain/service"
 )
 
 type TodoService struct {
 	repo repository.Database
 }
+
+var _ service.Todo = &TodoService{}
 
 func NewTodoService(repo repository.Database) *TodoService {
 	return &TodoService{

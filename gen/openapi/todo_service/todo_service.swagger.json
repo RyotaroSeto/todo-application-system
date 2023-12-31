@@ -91,6 +91,36 @@
         ]
       }
     },
+    "/todo/health": {
+      "get": {
+        "operationId": "TodoApi_HealthCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/todo_serviceHealthCheckResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "service",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TodoApi"
+        ]
+      }
+    },
     "/todo/{id}": {
       "delete": {
         "operationId": "TodoApi_Delete",
@@ -124,6 +154,16 @@
     }
   },
   "definitions": {
+    "HealthCheckResponseServingStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "SERVING",
+        "NOT_SERVING",
+        "SERVICE_UNKNOWN"
+      ],
+      "default": "UNKNOWN"
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -171,6 +211,14 @@
           "items": {
             "$ref": "#/definitions/todo_serviceTodo"
           }
+        }
+      }
+    },
+    "todo_serviceHealthCheckResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/HealthCheckResponseServingStatus"
         }
       }
     },

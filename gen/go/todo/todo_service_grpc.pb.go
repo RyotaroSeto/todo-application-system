@@ -19,9 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TodoApi_Get_FullMethodName    = "/todo_service.TodoApi/Get"
-	TodoApi_Add_FullMethodName    = "/todo_service.TodoApi/Add"
-	TodoApi_Delete_FullMethodName = "/todo_service.TodoApi/Delete"
+	TodoApi_Get_FullMethodName         = "/todo_service.TodoApi/Get"
+	TodoApi_Add_FullMethodName         = "/todo_service.TodoApi/Add"
+	TodoApi_Delete_FullMethodName      = "/todo_service.TodoApi/Delete"
+	TodoApi_HealthCheck_FullMethodName = "/todo_service.TodoApi/HealthCheck"
+	TodoApi_Watch_FullMethodName       = "/todo_service.TodoApi/Watch"
 )
 
 // TodoApiClient is the client API for TodoApi service.
@@ -31,6 +33,8 @@ type TodoApiClient interface {
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*AddResponse, error)
 	Delete(ctx context.Context, in *DeleteRequest, opts ...grpc.CallOption) (*DeleteResponse, error)
+	HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error)
+	Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (TodoApi_WatchClient, error)
 }
 
 type todoApiClient struct {
@@ -68,6 +72,47 @@ func (c *todoApiClient) Delete(ctx context.Context, in *DeleteRequest, opts ...g
 	return out, nil
 }
 
+func (c *todoApiClient) HealthCheck(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (*HealthCheckResponse, error) {
+	out := new(HealthCheckResponse)
+	err := c.cc.Invoke(ctx, TodoApi_HealthCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *todoApiClient) Watch(ctx context.Context, in *HealthCheckRequest, opts ...grpc.CallOption) (TodoApi_WatchClient, error) {
+	stream, err := c.cc.NewStream(ctx, &TodoApi_ServiceDesc.Streams[0], TodoApi_Watch_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &todoApiWatchClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type TodoApi_WatchClient interface {
+	Recv() (*HealthCheckResponse, error)
+	grpc.ClientStream
+}
+
+type todoApiWatchClient struct {
+	grpc.ClientStream
+}
+
+func (x *todoApiWatchClient) Recv() (*HealthCheckResponse, error) {
+	m := new(HealthCheckResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // TodoApiServer is the server API for TodoApi service.
 // All implementations must embed UnimplementedTodoApiServer
 // for forward compatibility
@@ -75,6 +120,8 @@ type TodoApiServer interface {
 	Get(context.Context, *GetRequest) (*GetResponse, error)
 	Add(context.Context, *AddRequest) (*AddResponse, error)
 	Delete(context.Context, *DeleteRequest) (*DeleteResponse, error)
+	HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error)
+	Watch(*HealthCheckRequest, TodoApi_WatchServer) error
 	mustEmbedUnimplementedTodoApiServer()
 }
 
@@ -90,6 +137,12 @@ func (UnimplementedTodoApiServer) Add(context.Context, *AddRequest) (*AddRespons
 }
 func (UnimplementedTodoApiServer) Delete(context.Context, *DeleteRequest) (*DeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
+}
+func (UnimplementedTodoApiServer) HealthCheck(context.Context, *HealthCheckRequest) (*HealthCheckResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HealthCheck not implemented")
+}
+func (UnimplementedTodoApiServer) Watch(*HealthCheckRequest, TodoApi_WatchServer) error {
+	return status.Errorf(codes.Unimplemented, "method Watch not implemented")
 }
 func (UnimplementedTodoApiServer) mustEmbedUnimplementedTodoApiServer() {}
 
@@ -158,6 +211,45 @@ func _TodoApi_Delete_Handler(srv interface{}, ctx context.Context, dec func(inte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TodoApi_HealthCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthCheckRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TodoApiServer).HealthCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TodoApi_HealthCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TodoApiServer).HealthCheck(ctx, req.(*HealthCheckRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TodoApi_Watch_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(HealthCheckRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(TodoApiServer).Watch(m, &todoApiWatchServer{stream})
+}
+
+type TodoApi_WatchServer interface {
+	Send(*HealthCheckResponse) error
+	grpc.ServerStream
+}
+
+type todoApiWatchServer struct {
+	grpc.ServerStream
+}
+
+func (x *todoApiWatchServer) Send(m *HealthCheckResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 // TodoApi_ServiceDesc is the grpc.ServiceDesc for TodoApi service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -177,7 +269,17 @@ var TodoApi_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "Delete",
 			Handler:    _TodoApi_Delete_Handler,
 		},
+		{
+			MethodName: "HealthCheck",
+			Handler:    _TodoApi_HealthCheck_Handler,
+		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Watch",
+			Handler:       _TodoApi_Watch_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "todo_service/todo_service.proto",
 }

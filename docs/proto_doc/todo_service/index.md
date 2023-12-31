@@ -10,12 +10,15 @@
     - [DeleteResponse](#todo_service-DeleteResponse)
     - [GetRequest](#todo_service-GetRequest)
     - [GetResponse](#todo_service-GetResponse)
+    - [HealthCheckRequest](#todo_service-HealthCheckRequest)
+    - [HealthCheckResponse](#todo_service-HealthCheckResponse)
     - [Todo](#todo_service-Todo)
     - [UpdateStatusRequest](#todo_service-UpdateStatusRequest)
     - [UpdateStatusResponse](#todo_service-UpdateStatusResponse)
     - [UpdateTitleRequest](#todo_service-UpdateTitleRequest)
     - [UpdateTitleResponse](#todo_service-UpdateTitleResponse)
   
+    - [HealthCheckResponse.ServingStatus](#todo_service-HealthCheckResponse-ServingStatus)
     - [TodoStatus](#todo_service-TodoStatus)
   
     - [TodoApi](#todo_service-TodoApi)
@@ -111,6 +114,36 @@
 
 
 
+<a name="todo_service-HealthCheckRequest"></a>
+
+### HealthCheckRequest
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| service | [string](#string) |  |  |
+
+
+
+
+
+
+<a name="todo_service-HealthCheckResponse"></a>
+
+### HealthCheckResponse
+
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| status | [HealthCheckResponse.ServingStatus](#todo_service-HealthCheckResponse-ServingStatus) |  |  |
+
+
+
+
+
+
 <a name="todo_service-Todo"></a>
 
 ### Todo
@@ -183,6 +216,20 @@
  
 
 
+<a name="todo_service-HealthCheckResponse-ServingStatus"></a>
+
+### HealthCheckResponse.ServingStatus
+
+
+| Name | Number | Description |
+| ---- | ------ | ----------- |
+| UNKNOWN | 0 |  |
+| SERVING | 1 |  |
+| NOT_SERVING | 2 |  |
+| SERVICE_UNKNOWN | 3 |  |
+
+
+
 <a name="todo_service-TodoStatus"></a>
 
 ### TodoStatus
@@ -210,6 +257,8 @@
 | Get | [GetRequest](#todo_service-GetRequest) | [GetResponse](#todo_service-GetResponse) |  |
 | Add | [AddRequest](#todo_service-AddRequest) | [AddResponse](#todo_service-AddResponse) |  |
 | Delete | [DeleteRequest](#todo_service-DeleteRequest) | [DeleteResponse](#todo_service-DeleteResponse) |  |
+| HealthCheck | [HealthCheckRequest](#todo_service-HealthCheckRequest) | [HealthCheckResponse](#todo_service-HealthCheckResponse) |  |
+| Watch | [HealthCheckRequest](#todo_service-HealthCheckRequest) | [HealthCheckResponse](#todo_service-HealthCheckResponse) stream |  |
 
  
 

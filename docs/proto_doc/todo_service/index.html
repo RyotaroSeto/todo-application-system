@@ -203,6 +203,14 @@
                 </li>
               
                 <li>
+                  <a href="#todo_service.HealthCheckRequest"><span class="badge">M</span>HealthCheckRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#todo_service.HealthCheckResponse"><span class="badge">M</span>HealthCheckResponse</a>
+                </li>
+              
+                <li>
                   <a href="#todo_service.Todo"><span class="badge">M</span>Todo</a>
                 </li>
               
@@ -222,6 +230,10 @@
                   <a href="#todo_service.UpdateTitleResponse"><span class="badge">M</span>UpdateTitleResponse</a>
                 </li>
               
+              
+                <li>
+                  <a href="#todo_service.HealthCheckResponse.ServingStatus"><span class="badge">E</span>HealthCheckResponse.ServingStatus</a>
+                </li>
               
                 <li>
                   <a href="#todo_service.TodoStatus"><span class="badge">E</span>TodoStatus</a>
@@ -358,6 +370,54 @@
 
         
       
+        <h3 id="todo_service.HealthCheckRequest">HealthCheckRequest</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>service</td>
+                  <td><a href="#string">string</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="todo_service.HealthCheckResponse">HealthCheckResponse</h3>
+        <p></p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>status</td>
+                  <td><a href="#todo_service.HealthCheckResponse.ServingStatus">HealthCheckResponse.ServingStatus</a></td>
+                  <td></td>
+                  <td><p> </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="todo_service.Todo">Todo</h3>
         <p></p>
 
@@ -481,6 +541,41 @@
       
 
       
+        <h3 id="todo_service.HealthCheckResponse.ServingStatus">HealthCheckResponse.ServingStatus</h3>
+        <p></p>
+        <table class="enum-table">
+          <thead>
+            <tr><td>Name</td><td>Number</td><td>Description</td></tr>
+          </thead>
+          <tbody>
+            
+              <tr>
+                <td>UNKNOWN</td>
+                <td>0</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SERVING</td>
+                <td>1</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>NOT_SERVING</td>
+                <td>2</td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>SERVICE_UNKNOWN</td>
+                <td>3</td>
+                <td><p></p></td>
+              </tr>
+            
+          </tbody>
+        </table>
+      
         <h3 id="todo_service.TodoStatus">TodoStatus</h3>
         <p></p>
         <table class="enum-table">
@@ -543,6 +638,20 @@
                 <td><p></p></td>
               </tr>
             
+              <tr>
+                <td>HealthCheck</td>
+                <td><a href="#todo_service.HealthCheckRequest">HealthCheckRequest</a></td>
+                <td><a href="#todo_service.HealthCheckResponse">HealthCheckResponse</a></td>
+                <td><p></p></td>
+              </tr>
+            
+              <tr>
+                <td>Watch</td>
+                <td><a href="#todo_service.HealthCheckRequest">HealthCheckRequest</a></td>
+                <td><a href="#todo_service.HealthCheckResponse">HealthCheckResponse</a> stream</td>
+                <td><p></p></td>
+              </tr>
+            
           </tbody>
         </table>
 
@@ -587,6 +696,16 @@
                 <td>Delete</td>
                 <td>DELETE</td>
                 <td>/todo/{id}</td>
+                <td></td>
+              </tr>
+              
+            
+              
+              
+              <tr>
+                <td>HealthCheck</td>
+                <td>GET</td>
+                <td>/todo/health</td>
                 <td></td>
               </tr>
               

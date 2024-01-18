@@ -2,7 +2,7 @@ FROM node:21.2-bookworm as dev
 
 WORKDIR /app
 COPY . ./
-RUN npm install -g pnpm
+RUN npm install -g pnpm@8
 RUN pnpm install
 
 EXPOSE 3000
